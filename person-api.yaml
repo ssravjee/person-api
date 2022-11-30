@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  title: Person API - OpenAPI 3.0
+  description: |-
+    This is a sample Person API based on the OpenAPI 3.0 specification.  You can find out more about
+    Swagger at [https://swagger.io](https://swagger.io).
+    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
+    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
+    Some useful links:
+    - [The Person API repository](https://github.com/ssravjee/swagger-api/swagger-person-api)
+    - [The source API definition for the Pet Store](https://github.com/ssravjee/swagger-api/person-api/master/src/main/resources/openapi.yaml)
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: ssravjee@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://person-api/api/v3
+tags:
+  - name: person
+    description: Everything about a Person
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /person/ids:
+    get:
+      summary: Get all Person Ids
+      tags:
+        - ids
+      description: Get list of person ids
+      operationId: getPersonIds
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ids'
+        '400':
+          description: Invalid Request URI
+        '404':
+          description: Person not found
+        '405':
+          description: Validation exception
+components:
+  schemas:
+    ids:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: object
+            required:
+              - id
+            properties:
+              id:
+                type: integer
